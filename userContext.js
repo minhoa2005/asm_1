@@ -1,21 +1,21 @@
 import { createContext, useContext, useState } from "react";
 
-const userProvider = createContext();
+const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const value = { user, setUser };
     return (
-        <userProvider.Provider value={value}>
+        <UserContext.Provider value={value}>
             {children}
-        </userProvider.Provider>
+        </UserContext.Provider>
     );
 }
 
 const useUser = () => {
-    const context = useContext(userProvider);
+    const context = useContext(UserContext);
     if (!context) {
-        return 'Context not found';
+        throw new Error('useUser must be used within a UserProvider');
     }
     return context;
 }
