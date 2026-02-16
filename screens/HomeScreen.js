@@ -4,7 +4,7 @@ import { colors, useTheme } from '../themeContext'
 export default function HomeScreen({ navigation }) {
     const { theme } = useTheme();
     return (
-        <View style={[styles.container(theme), { display: 'flex', alignItems: 'center', justifyContent: 'center' }]}>
+        <View style={[styles.container(theme), { display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1 }]}>
             <Text style={styles.text(theme)}>Welcome !</Text>
             <Button title='Go to Profile' onPress={() => navigation.navigate('Profile')} />
         </View>
