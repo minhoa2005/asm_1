@@ -5,9 +5,6 @@ import { colors, useTheme } from '../themeContext';
 
 export default function SettingsScreen({ navigation }) {
     const { theme, setTheme } = useTheme();
-    const toggleTheme = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
-    };
     return (
         <View style={styles.container(theme)}>
             <View style={{ display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
@@ -17,7 +14,7 @@ export default function SettingsScreen({ navigation }) {
                     <Switch
                         thumbColor={theme === 'dark' ? '#fff' : '#fff'}
                         value={theme === 'dark'}
-                        onValueChange={toggleTheme}
+                        onValueChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                     />
                     <Text style={[styles.text(theme), { fontSize: 16 }]}>Dark</Text>
                 </View>
