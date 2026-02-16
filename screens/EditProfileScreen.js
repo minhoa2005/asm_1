@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { View } from 'react-native'
 import { colors, useTheme } from '../themeContext'
 
-export default function EditProfileScreen() {
+export default function EditProfileScreen({ navigation }) {
     const { theme } = useTheme();
     return (
         <View style={[styles.container(theme), { flex: 1, alignItems: 'center', justifyContent: 'center' }]}>
@@ -13,6 +13,7 @@ export default function EditProfileScreen() {
 
 const styles = {
     container: (theme) => ({
-        ...colors[theme]
+        backgroundColor: colors[theme].background,
+        color: colors[theme].text,
     })
 }
