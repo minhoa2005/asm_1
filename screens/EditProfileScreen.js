@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { TextInput, View, Text } from 'react-native'
+import { TextInput, View, Text, Button } from 'react-native'
 import { colors, useTheme } from '../themeContext'
 import * as yup from 'yup';
 import { Formik } from 'formik';
@@ -18,9 +18,10 @@ export default function EditProfileScreen({ navigation }) {
                 validationSchema={schema}
                 onSubmit={(values) => {
                     setUser({ ...user, username: values.username, bio: values.bio });
+                    navigation.goBack();
                 }}
             >
-                {({ handleChange, handleBlur, values, errors, touched }) => (
+                {({ handleChange, handleBlur, values, errors, touched, handleSubmit }) => (
                     <View>
                         <View>
                             <Text style={styles.text(theme)}>Username</Text>
@@ -52,6 +53,7 @@ export default function EditProfileScreen({ navigation }) {
                                 </Text>
                             )}
                         </View>
+                        <Button title="Save Changes" onPress={handleSubmit} />
                     </View>
                 )}
             </Formik>
